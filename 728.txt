@@ -1,0 +1,46 @@
+JVM (자바 버츄얼 머신)
+메모리공간 - class, heap ,stack
+
+class : InstanceMain - void main(String[] args)
+(메소드의 실행은 무조건 stack에서 한다)
+
+stack : InstaceMain, Main()을 실행 (배열이니까 주소로 받아옴)
+
+객체는 주소를 창조함
+
+주말동안 jsp에서 값을 받아서 해보기
+
+-------------------------------------------------
+변수 : 값을 담을 수 있는 메모리 공간 (같은 자료형으로 묶어놓은 집합)
+변수를 배열로 묶어 놓음
+
+byte 1byte
+short 2byte
+int 4byte
+long 8byte
+
+char 2byte
+double
+flat 4byte
+boolean 
+
+64bit = 8byte
+
+배열은 크기가 중요!
+변수는 일반값을, 배열(heap에 공간을 만듬)은 주소값을 받는다.
+
+1.선언
+자료형 [] 변수명 : 자료형 변수명 [] 도 가능
+int [] arr ---> 선언만 한 변수는 직접 사용불가
+
+sorting 종류
+ - bubble
+ - quick
+ - merge
+ - insert
+ - select
+ - shell
+
+
+
+
