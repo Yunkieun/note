@@ -1,0 +1,64 @@
+<MVC>
+
+*MVC 패턴 = 모델 + 뷰 + 컨트롤러
+====================================================================
+ View    ------   Controller  ---------------------------------------------- model
+
+       url : http://localhost:8080:mvcProj/board/BoardList   1
+
+               (... /BoardDetail?id=12  ... /BoardWriteForm   ... /BoardWriteReg 
+
+                ... /BoardModifyForm?id=12  ....... )
+  
+                              |
+                             V
+
+           tomcat  : http://localhost:8080:mvcProj/프로젝트 로 진입해라!!!   2
+
+                              |
+                              V
+
+                          web.xml    3   (규칙 ::>  /board/???? 인 경우 BoardController로 진입)
+
+                          @WebServlet("/board/*")
+
+                              |
+ (forward)                             V
+template 10 <------  BoardController  4, 9  (Servlet)
+
+                              ↑              
+
+   |                          |
+
+   |                          |   
+
+   |                          |       BoardService.execute()  추상메소드    5
+
+   |                          |           (인터페이스) 
+
+   V                         V
+
+                            (Service)
+ (include)
+board_list.jsp 11        BoardList .execute()   (Interface 구현 클래스)  6, 8 <------------------>  db.java  (DAO) 7
+
+top.jsp                                                                                                (db에서 받아오는 클래스)
+
+menu.jsp                                                                                                   Object  write()
+
+bottom.jsp
+
+                               (Service) BoardDetail, BoardWrite, BoardModify,BoardDelete.....
+=============================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<context>
+	<Resource
+		name="mvc322"
+		auth="Container"
+		type="javax.sql.DataSource" //JRE System Library 위치
+		driverClassName="com.mysql.cj.jdbc.Driver" //Web App Library
+		url="jdbc:mysql://localhost:3306/db322"
+		username="usr322"
+		password="12345678"
+	/>
+</context>
