@@ -1,0 +1,97 @@
+<DI>
+
+가변변수형태 value="11,22,33" 으로 넣어도 됨
+------------------------------------------------------------
+<list>
+    <value>
+
+--------------
+<list>
+    <ref been="">
+--------------
+<map>
+  <entry>
+     <key><value>
+     <ref been="">
+     <list>
+        <value>
+--------------
+   <array>
+   </array>
+
+   <set>
+        <ref been="">
+
+========================================
+기존 5명의 학생정보를 가지고 등수를 출력하세요.
+학생
+이름, 국어,영어, 수학, 총점, 평균
+========================================
+<%@page import="model_p.GalleryDTO"%>
+<%@page import="model_p.PageData"%>
+<%@page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%> 
+       
+<table border="">
+	
+<%
+PageData pd = (PageData)request.getAttribute("pd"); 
+//int i = pd.start;
+
+//i++;
+%>	
+			
+
+			
+ 			<tr align="center">
+				<%for(GalleryDTO dto : (ArrayList<GalleryDTO>) request.getAttribute("mainData")) { %>
+				<td width="200px" >
+					제목: <%=dto.getTitle() %></br>
+					작성자: <%=dto.getPname() %></br>
+					<% if(dto.isImg()) {%>
+					 	<img width="180px" src="/mvcProj/up/<%=dto.getUpfile() %>" alt="" /> 
+					<%} else { %>
+					 	<a href="/mvcProj/noneJsp/FileDown?fName=<%=dto.getUpfile() %>"><%=dto.getUpfile() %></a> 
+					<%} %>
+				</td>
+				<%} %>
+			</tr> 
+			
+			
+<%-- 	<tr colspan="5" align="center">
+		<td>제목: <%=dto.getTitle() %></td>
+		<td>작성자: <%=dto.getPname() %></td>
+		<td>이미지:
+		<% if(dto.isImg()) {%>
+		 	<img width="500px" src="/mvcProj/up/<%=dto.getUpfile() %>" alt="" /> 
+		<%} else { %>
+		 	<a href="/mvcProj/noneJsp/FileDown?fName=<%=dto.getUpfile() %>"><%=dto.getUpfile() %></a> 
+		<%} %>
+		</td>
+	</tr> --%>
+	
+	<tr>
+		<td colspan="5" align="center">
+		<% if(pd.pageStart > 1){ %>
+			<a href="?page=<%=pd.pageStart-1%>">[이전]</a>
+		<% } for(int p = pd.pageStart;p<=pd.pageEnd;p++) {
+			if(pd.page == p) {%>
+				[<%=p%>]
+		<%}else{ %>
+				<a href="?page=<%=p%>"><%=p%></a>
+		<%}}  if(pd.pageEnd < pd.pageTotal){ %>
+			<a href="?page=<%=pd.pageEnd+1%>">[다음]</a>
+		<%} %>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="5" width="900px"  align="right">
+			<a href="GWriteForm?page=<%=pd.page%>">글쓰기</a>
+		</td>
+	</tr>
+</table>
+
+트리셋 구동방식
+Comparable 
+

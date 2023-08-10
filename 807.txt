@@ -1,0 +1,8 @@
+답변에서 gid로 내림차순 정렬되어야함
+gid로 맞춰줘야함
+글 썼을때 id랑 gid같아야함
+
+lev seq          id gid
+
+
+limit
